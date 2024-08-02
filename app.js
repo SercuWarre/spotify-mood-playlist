@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let genreChart = null;
 
   const accessToken =
-    'BQAPjda656IFF4R8ThN5waEoBWwE8nrW4WWb0DgHUk-pSC0j5zKBf4cQ2hhXfvDEW2QukWzq4-4ovmNQ_XEp57kM30MIaETQXDyX5Np5eOiaas8MG2o'; // Replace with your Spotify access token
+    'BQDCBSZrHVkERBU_IQa1_ecGXkn6MOg1OdA1O7afYW3EotlI-k3lVfZi5pnVHYi81uN0Wwg4WjDH1-DwUBscuy8NiF4Izbf4X5xIZeIoVCKdEBuHA98'; // Replace with your Spotify access token
   const moodPlaylists = {
     happy: '37i9dQZF1DX4VvY1c2sM2M',
     chill: '6IKQrtMc4c00YzONcUt7QH',
