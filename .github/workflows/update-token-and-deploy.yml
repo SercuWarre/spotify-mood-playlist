@@ -26,13 +26,13 @@ jobs:
 
     - name: Update Access Token in JavaScript
       run: |
-        sed -i "s/const accessToken = '.*'/const accessToken = '${{ env.TOKEN }}'/g" ../app.js
+        sed -i "s/const accessToken = '.*'/const accessToken = '${{ env.TOKEN }}'/g" ./app.js
 
     - name: Commit and Push Changes
       run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "GitHub Actions"
-        git add ../app.js
+        git add ./app.js
         git commit -m "Update Spotify access token"
         git push
 
