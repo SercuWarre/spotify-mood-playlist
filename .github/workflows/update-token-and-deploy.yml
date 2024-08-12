@@ -31,8 +31,7 @@ jobs:
           echo "Access Token: $TOKEN"
           echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
 
-      - name: Debug Access Token
-        run: echo "Token from environment: ${{ env.TOKEN }}"
+
 
       - name: Update Access Token in JavaScript
         run: |
