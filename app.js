@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedMood = '';
   let genreChart = null;
 
-const accessToken = 'YOUR_SPOTIFY_ACCESS_TOKEN';  // This will be replaced by GitHub Actions
+const accessToken = 'null';  // This will be replaced by GitHub Actions
   const moodPlaylists = {
     happy: '37i9dQZF1DX4VvY1c2sM2M',
     chill: '6IKQrtMc4c00YzONcUt7QH',
