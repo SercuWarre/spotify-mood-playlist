@@ -21,8 +21,8 @@ jobs:
       - name: Refresh Spotify Access Token
         id: get-token
         run: |
-          CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}
-          CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          CLIENT_ID=${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}
           echo "Client ID: $CLIENT_ID"
           echo "Client Secret: $CLIENT_SECRET"
           RESPONSE=$(curl -s -X POST -H "Authorization: Basic $(echo -n $CLIENT_ID:$CLIENT_SECRET | base64)" \
