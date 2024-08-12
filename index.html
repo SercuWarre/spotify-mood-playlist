@@ -32,6 +32,10 @@
             </div>
         </header>
         <main>
+             <div id="loading-indicator" class="loading-indicator hidden">
+                <div class="spinner"></div>
+                <p>Loading...</p>
+            </div>
             <div>
                 <canvas id="genreChart" width="400" height="400"></canvas>
             </div>
@@ -40,6 +44,7 @@
             </div>
         </main>
     </div>
+    <div id="confirmation-message" class="hidden">Mood Selected: <span id="selected-mood"></span></div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
 </body>

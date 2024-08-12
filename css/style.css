@@ -7,7 +7,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    
     overflow: hidden; /* Prevent scroll on body */
 }
 
@@ -128,7 +127,69 @@ main {
     font-size: 14px;
     color: #555;
 }
+/* Micro-interaction for hover effect */
+button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+}
 
+/* Song Card Hover Effects */
+.song-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Confirmation Message */
+#confirmation-message {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#confirmation-message.show {
+    opacity: 1;
+}
+
+#confirmation-message span {
+    font-weight: bold;
+}
+
+
+/* Loading indicator styles */
+.loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loading-indicator.hidden {
+    display: none;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-top-color: #007bff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 /* Chart styles */
 canvas {

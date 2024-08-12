@@ -1,0 +1,43 @@
+name: Update Spotify Token and Deploy to GitHub Pages
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v2
+
+    - name: Refresh Spotify Access Token
+      id: get-token
+      run: |
+        CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}
+        CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}
+        TOKEN=$(curl -s -X POST -H "Authorization: Basic $(echo -n $CLIENT_ID:$CLIENT_SECRET | base64)" \
+        -d grant_type=client_credentials \
+        https://accounts.spotify.com/api/token | jq -r .access_token)
+        echo "Access Token: $TOKEN"
+        echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
+
+    - name: Update Access Token in JavaScript
+      run: |
+        sed -i "s/const accessToken = '.*'/const accessToken = '${{ env.TOKEN }}'/g" ../app.js
+
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "GitHub Actions"
+        git add ../app.js
+        git commit -m "Update Spotify access token"
+        git push
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public  # Adjust to your actual build output directory
