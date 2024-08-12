@@ -2,14 +2,14 @@ name: Update Spotify Token and Deploy to GitHub Pages
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs every hour
-  workflow_dispatch:  # Allows manual triggering of the workflow
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Grant write access to the repository contents
+      contents: write # Grant write access to the repository contents
 
     steps:
       - name: Checkout the repository
@@ -19,17 +19,21 @@ jobs:
         run: sudo apt-get install -y jq
 
       - name: Refresh Spotify Access Token
-        id: get-token
-        run: |
-          CLIENT_ID=${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}
-          RESPONSE=$(curl -s -X POST -H "Authorization: Basic $(echo -n $CLIENT_ID:$CLIENT_SECRET | base64)" \
-          -d grant_type=client_credentials \
-          https://accounts.spotify.com/api/token)
-          echo "Response: $RESPONSE"
-          TOKEN=$(echo "$RESPONSE" | jq -r .access_token)
-          echo "Access Token: $TOKEN"
-          echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
+  id: get-token
+  run: |
+    CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}
+    CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}
+    RESPONSE=$(curl -s -X POST -H "Authorization: Basic $(echo -n $CLIENT_ID:$CLIENT_SECRET | base64)" \
+    -d grant_type=client_credentials \
+    https://accounts.spotify.com/api/token)
+    echo "Response: $RESPONSE"  # Log the entire response
+    ERROR=$(echo "$RESPONSE" | jq -r .error)
+    ERROR_DESCRIPTION=$(echo "$RESPONSE" | jq -r .error_description)
+    echo "Error: $ERROR"
+    echo "Error Description: $ERROR_DESCRIPTION"
+    TOKEN=$(echo "$RESPONSE" | jq -r .access_token)
+    echo "Access Token: $TOKEN"
+    echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
 
 
 
