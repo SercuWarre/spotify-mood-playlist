@@ -18,8 +18,8 @@ jobs:
     - name: Refresh Spotify Access Token
       id: get-token
       run: |
-        CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}
-        CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}
+        CLIENT_ID=${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}
         TOKEN=$(curl -s -X POST -H "Authorization: Basic $(echo -n $CLIENT_ID:$CLIENT_SECRET | base64)" \
         -d grant_type=client_credentials \
         https://accounts.spotify.com/api/token | jq -r .access_token)
