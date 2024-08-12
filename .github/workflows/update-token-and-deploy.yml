@@ -15,16 +15,24 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v2
 
+    - name: Install jq
+      run: sudo apt-get install jq
+
     - name: Refresh Spotify Access Token
       id: get-token
       run: |
         CLIENT_ID=${{ secrets.CLIENT_ID }}
         CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}
-        TOKEN=$(curl -s -X POST -H "Authorization: Basic $(echo -n $CLIENT_ID:$CLIENT_SECRET | base64)" \
+        RESPONSE=$(curl -s -X POST -H "Authorization: Basic $(echo -n $CLIENT_ID:$CLIENT_SECRET | base64)" \
         -d grant_type=client_credentials \
-        https://accounts.spotify.com/api/token | jq -r .access_token)
-        echo "access_token: $TOKEN"
+        https://accounts.spotify.com/api/token)
+        echo "Response: $RESPONSE"
+        TOKEN=$(echo "$RESPONSE" | jq -r .access_token)
+        echo "Access Token: $TOKEN"
         echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
+
+    - name: Debug Access Token
+      run: echo "Token from environment: ${{ env.TOKEN }}"
 
     - name: Update Access Token in JavaScript
       run: |
