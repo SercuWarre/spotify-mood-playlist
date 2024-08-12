@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Grant write access to the repository contents
 
     steps:
     - name: Checkout the repository
@@ -34,7 +36,7 @@ jobs:
         git config --global user.name "GitHub Actions"
         git add ./app.js
         git commit -m "Update Spotify access token"
-        git push
+        git push origin main  # Ensure you push to the correct branch
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
