@@ -13,21 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const accessToken ='BQC7jEYC-ybKk7i-fbeL1b5nS3MUIQDGN1846z9YqEKQ5M1nlI7mUOISVt9OxeV8S8-8fuRRV0vF9gDxgHL5oQE5Cd64CiqNkynsrilnwk9WlOTx6cs'; // Replace with actual access token
 
   const moodPlaylists = {
-    happy: '37i9dQZF1EIgG2NEOhqsD7',
-    chill: '6IKQrtMc4c00YzONcUt7QH',
-    energetic: '37i9dQZF1EIeEZPgsd7pko',
-    sad: '5irzXdNeeKc0Dg3UK4Ww6n',
-    angry: '0a4Hr64HWlxekayZ8wnWqx',
-    focus: '3WK8djg4g0XFKkEIRRvOgg',
-    relax: '7JabddFr3Q6JPsND4v9Swf',
-    romantic: '4cJ8qUzt5CSTE9XN5uK2z2',
-    party: '5xS3Gi0fA3Uo6RScucyct6',
-    workout: '2SM6rniZl84fEyMCB5KMQB',
-    uplifting: '5BxqiXdL315dDipxbfKXdr',
-    sleep: '6eHd1vqUfBOVd71SHdR09l',
-    reflective: '3G9rthSd7lmSSQj8YqDEBU',
-    road_trip: '6DHD12EjGiRV9uSgIcnn4M',
-    background: '0qg6KzBLO7rL48c0QfNpLZ',
+    Happy: '37i9dQZF1EIgG2NEOhqsD7',
+    Chill: '6IKQrtMc4c00YzONcUt7QH',
+    Energetic: '37i9dQZF1EIeEZPgsd7pko',
+    Sad: '5irzXdNeeKc0Dg3UK4Ww6n',
+    Angry: '0a4Hr64HWlxekayZ8wnWqx',
+    Focus: '3WK8djg4g0XFKkEIRRvOgg',
+    Relax: '7JabddFr3Q6JPsND4v9Swf',
+    Romantic: '4cJ8qUzt5CSTE9XN5uK2z2',
+    Party: '5xS3Gi0fA3Uo6RScucyct6',
+    Workout: '2SM6rniZl84fEyMCB5KMQB',
+    Uplifting: '5BxqiXdL315dDipxbfKXdr',
+    Sleep: '6eHd1vqUfBOVd71SHdR09l',
+    Reflective: '3G9rthSd7lmSSQj8YqDEBU',
+    Road_trip: '6DHD12EjGiRV9uSgIcnn4M',
+    Background: '0qg6KzBLO7rL48c0QfNpLZ',
   };
 
   const showLoadingIndicator = () => {
@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const fetchPlaylistTracks = async (playlistId) => {
+
     const response = await fetch(
       `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
       {

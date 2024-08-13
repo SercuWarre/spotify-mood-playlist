@@ -75,6 +75,7 @@ h1 {
     border-radius: var(--border-radius);
     cursor: pointer;
     font-size: var(--font-size-medium);
+    width: 8rem;
 }
 
 .dropdown-content {
