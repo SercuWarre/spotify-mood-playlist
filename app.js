@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedMood = '';
   let genreChart = null;
 
-  const accessToken =
-    'BQAiHfdnZ6248ykj0nbFEyTROoSh8D0R7Hywioktnp8vMK0S-RMGi1szPiJ1alRCs30jBHDSPpKObNu7tvWWo4b8K6sMd8mvXmilWRnaWpb8lyhCV6M'; // Replace with your Spotify access token
+const accessToken = '';  // This will be replaced by GitHub Actions
   const moodPlaylists = {
     happy: '37i9dQZF1DX4VvY1c2sM2M',
     chill: '6IKQrtMc4c00YzONcUt7QH',
