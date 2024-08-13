@@ -29,6 +29,7 @@ jobs:
         AUTH_HEADER=$(echo -n "$CLIENT_ID:$CLIENT_SECRET" | base64)
         echo "Authorization Header: $AUTH_HEADER"
         RESPONSE=$(curl -s -X POST -H "Authorization: Basic $AUTH_HEADER" \
+        -H "Content-Type: application/x-www-form-urlencoded" \
         -d grant_type=client_credentials \
         https://accounts.spotify.com/api/token)
         echo "Response: $RESPONSE"
@@ -39,6 +40,7 @@ jobs:
         TOKEN=$(echo "$RESPONSE" | jq -r .access_token)
         echo "Access Token: $TOKEN"
         echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
+
 
     - name: Debug Access Token
       run: echo "Token from environment ${{ env.TOKEN }}"
