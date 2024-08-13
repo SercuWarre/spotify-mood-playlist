@@ -15,7 +15,7 @@ body {
     grid-template-rows: auto 1fr;
     grid-template-columns: 1fr;
     gap: 20px;
-    width: 100vw;
+    width: 80vw;
     max-height: 90vh;
     height: fit-content;
     max-width: 800px;
