@@ -28,8 +28,8 @@ jobs:
         CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}
         AUTH_HEADER=$(echo -n "$CLIENT_ID:$CLIENT_SECRET" | base64)
         echo "Authorization Header: $AUTH_HEADER"
-        RESPONSE=$(curl -s -X POST -H "Authorization: Basic $AUTH_HEADER" \
-        -d grant_type=client_credentials \
+        RESPONSE=$(curl -s -X POST -H "Authorization: Basic $AUTH_HEADER" 
+        -d grant_type=client_credentials 
         https://accounts.spotify.com/api/token)
         echo "Response: $RESPONSE"
         ERROR=$(echo "$RESPONSE" | jq -r .error)
