@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedMood = '';
   let genreChart = null;
 
-const accessToken = 'BQDPkFcmGXBFIdC3lPEzMKgPmkQJ1j0pW26x4W4mSllgxJXpkNR2IIa7FSWRjQD-nYpjEw9V7sHkClzzZhxlLZTBAm5FZKo1pFJX2JPA5Iu0CNDN3Ys';  // This will be replaced by GitHub Actions
+  const accessToken ='BQDPkFcmGXBFIdC3lPEzMKgPmkQJ1j0pW26x4W4mSllgxJXpkNR2IIa7FSWRjQD-nYpjEw9V7sHkClzzZhxlLZTBAm5FZKo1pFJX2JPA5Iu0CNDN3Ys'; // Replace with actual access token
+
   const moodPlaylists = {
     happy: '37i9dQZF1DX4VvY1c2sM2M',
     chill: '6IKQrtMc4c00YzONcUt7QH',
@@ -86,13 +87,23 @@ const accessToken = 'BQDPkFcmGXBFIdC3lPEzMKgPmkQJ1j0pW26x4W4mSllgxJXpkNR2IIa7FSW
     return genreCounts;
   };
 
+  // Function to get top N genres by count
+  const getTopGenres = (genreCounts, topN = 5) => {
+    const sortedGenres = Object.entries(genreCounts).sort(
+      (a, b) => b[1] - a[1]
+    );
+    return sortedGenres.slice(0, topN);
+  };
+
   const displayGenreChart = (genreCounts) => {
     if (genreChart) {
       genreChart.destroy();
     }
 
-    const genres = Object.keys(genreCounts);
-    const counts = Object.values(genreCounts);
+    // Get the top 5 genres
+    const topGenres = getTopGenres(genreCounts, 5);
+    const genres = topGenres.map((entry) => entry[0]);
+    const counts = topGenres.map((entry) => entry[1]);
 
     genreChart = new Chart(genreChartCanvas, {
       type: 'pie',
@@ -108,11 +119,6 @@ const accessToken = 'BQDPkFcmGXBFIdC3lPEzMKgPmkQJ1j0pW26x4W4mSllgxJXpkNR2IIa7FSW
               'rgba(255, 206, 86, 0.6)',
               'rgba(75, 192, 192, 0.6)',
               'rgba(153, 102, 255, 0.6)',
-              'rgba(255, 159, 64, 0.6)',
-              'rgba(201, 203, 207, 0.6)',
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
             ],
             borderColor: [
               'rgba(255, 99, 132, 1)',
@@ -120,11 +126,6 @@ const accessToken = 'BQDPkFcmGXBFIdC3lPEzMKgPmkQJ1j0pW26x4W4mSllgxJXpkNR2IIa7FSW
               'rgba(255, 206, 86, 1)',
               'rgba(75, 192, 192, 1)',
               'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-              'rgba(201, 203, 207, 1)',
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
             ],
             borderWidth: 1,
           },
