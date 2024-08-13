@@ -1,8 +1,30 @@
+/* Define CSS variables */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #f0f0f0;
+    --text-color: #555;
+    --background-color: #fff;
+    --border-radius: 8px;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    --dropdown-background: #f9f9f9;
+    --dropdown-item-hover: #ddd;
+    --loading-spinner-color: #007bff;
+    --confirmation-background: #28a745;
+    --confirmation-text: #fff;
+    --button-padding: 10px 20px;
+    --font-size-small: 14px;
+    --font-size-medium: 16px;
+    --font-size-large: 24px;
+    --gap: 20px;
+    --max-height-main: 80vh;
+    --song-card-background: #f9f9f9;
+}
+
 /* General styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: var(--secondary-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,15 +36,15 @@ body {
     display: grid;
     grid-template-rows: auto 1fr;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: var(--gap);
     width: 80vw;
     max-height: 90vh;
     height: fit-content;
     max-width: 800px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: var(--gap);
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     overflow-y: auto;
 }
 
@@ -37,7 +59,7 @@ header {
 
 h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: var(--font-size-large);
 }
 
 .dropdown {
@@ -46,25 +68,25 @@ h1 {
 }
 
 .dropbtn {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: #fff;
-    padding: 10px 20px;
+    padding: var(--button-padding);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    font-size: 16px;
+    font-size: var(--font-size-medium);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: var(--dropdown-background);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     max-height: 200px;
     overflow-y: auto;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     top: 100%; /* Position below the button */
     left: -100%;
 }
@@ -75,11 +97,11 @@ h1 {
     text-decoration: none;
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: var(--font-size-medium);
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: var(--dropdown-item-hover);
 }
 
 .show {
@@ -89,11 +111,11 @@ h1 {
 /* Main content styles */
 main {
     display: grid;
-    gap: 20px;
+    gap: var(--gap);
     place-items: center;
     overflow-y: auto; /* Ensure the main content is scrollable */
     width: 100%;
-    max-height: 80vh; /* Adjust height as needed */
+    max-height: var(--max-height-main); /* Adjust height as needed */
 }
 
 #songs-container {
@@ -104,9 +126,9 @@ main {
 
 /* Song card styles */
 .song-card {
-    background-color: #fff;
+    background-color: var(--song-card-background);
     padding: 15px;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -124,9 +146,10 @@ main {
 
 .song-card p {
     margin: 5px 0;
-    font-size: 14px;
-    color: #555;
+    font-size: var(--font-size-small);
+    color: var(--text-color);
 }
+
 /* Micro-interaction for hover effect */
 button:active {
     transform: scale(0.95);
@@ -142,10 +165,10 @@ button:active {
 
 /* Confirmation Message */
 #confirmation-message {
-    background-color: #28a745;
-    color: #fff;
+    background-color: var(--confirmation-background);
+    color: var(--confirmation-text);
     padding: 10px;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     position: fixed;
     top: 20px;
     right: 20px;
@@ -161,7 +184,6 @@ button:active {
 #confirmation-message span {
     font-weight: bold;
 }
-
 
 /* Loading indicator styles */
 .loading-indicator {
@@ -181,7 +203,7 @@ button:active {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border-top-color: #007bff;
+    border-top-color: var(--loading-spinner-color);
     animation: spin 1s ease-in-out infinite;
 }
 
@@ -209,4 +231,20 @@ canvas {
     #songs-container {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #007bff;
+        --secondary-color: #333;
+        --text-color: #fff;
+        --background-color: #444;
+        --dropdown-background: #555;
+        --dropdown-item-hover: #666;
+        --loading-spinner-color: #007bff;
+        --confirmation-background: #28a745;
+        --confirmation-text: #fff;
+        --song-card-background: #555;
+    }
+
 }
