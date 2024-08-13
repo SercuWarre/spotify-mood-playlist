@@ -219,8 +219,6 @@ canvas {
     width: 100% !important;
     height: auto !important;
     max-height: 40vh;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
     
     
 }
@@ -241,16 +239,16 @@ canvas {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --primary-color: #007bff;
+        --primary-color: #1ED760;
         --secondary-color: #333;
         --text-color: #1ED760;
         --background-color: #444;
-        --dropdown-background: #555;
+        --dropdown-background: #333;
         --dropdown-item-hover: #666;
         --loading-spinner-color: #007bff;
         --confirmation-background: #28a745;
         --confirmation-text: #fff;
-        --song-card-background: #555;
+        --song-card-background: #333;
     }
 
 }
