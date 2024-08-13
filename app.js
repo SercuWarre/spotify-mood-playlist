@@ -13,21 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const accessToken ='BQDPkFcmGXBFIdC3lPEzMKgPmkQJ1j0pW26x4W4mSllgxJXpkNR2IIa7FSWRjQD-nYpjEw9V7sHkClzzZhxlLZTBAm5FZKo1pFJX2JPA5Iu0CNDN3Ys'; // Replace with actual access token
 
   const moodPlaylists = {
-    happy: '37i9dQZF1DX4VvY1c2sM2M',
+    happy: '37i9dQZF1EIgG2NEOhqsD7',
     chill: '6IKQrtMc4c00YzONcUt7QH',
-    energetic: '3y11OK67FAULJae0zEd1jD',
-    sad: '37i9dQZF1DX7qK8ma5wgG1',
-    angry: '37i9dQZF1DX1gRalH1mWrP',
-    focus: '37i9dQZF1DWY5nN5A0K6ZV',
-    relax: '37i9dQZF1DX2U2f5RilnbB',
-    romantic: '37i9dQZF1DWV1D2It0M5t8',
-    party: '37i9dQZF1DX4sWSpwq3m1O',
-    workout: '37i9dQZF1DX70RN3TfWWJh',
-    uplifting: '37i9dQZF1DX3rxVfibe1L0',
-    sleep: '37i9dQZF1DWZd79rJ6a7lp',
-    reflective: '37i9dQZF1DXdPec7aLTmlC',
-    road_trip: '37i9dQZF1DWUxHPh2rEj9l',
-    background: '37i9dQZF1DWYBF1dYDPlHw',
+    energetic: '37i9dQZF1EIeEZPgsd7pko',
+    sad: '5irzXdNeeKc0Dg3UK4Ww6n',
+    angry: '0a4Hr64HWlxekayZ8wnWqx',
+    focus: '3WK8djg4g0XFKkEIRRvOgg',
+    relax: '7JabddFr3Q6JPsND4v9Swf',
+    romantic: '4cJ8qUzt5CSTE9XN5uK2z2',
+    party: '5xS3Gi0fA3Uo6RScucyct6',
+    workout: '2SM6rniZl84fEyMCB5KMQB',
+    uplifting: '5BxqiXdL315dDipxbfKXdr',
+    sleep: '5FI8rn340FgsOB7B8Ic0DZ',
+    reflective: '3G9rthSd7lmSSQj8YqDEBU',
+    road_trip: '6DHD12EjGiRV9uSgIcnn4M',
+    background: '0qg6KzBLO7rL48c0QfNpLZ',
   };
 
   const showLoadingIndicator = () => {
