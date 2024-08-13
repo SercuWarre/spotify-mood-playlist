@@ -38,6 +38,8 @@ jobs:
         echo "Error: $ERROR"
         echo "Error Description: $ERROR_DESCRIPTION"
         TOKEN=$(echo "$RESPONSE" | jq -r .access_token)
+        echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
+
 
     - name: Debug Access Token
       run: echo "Token from environment ${{ env.TOKEN }}"
