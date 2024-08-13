@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedMood = '';
   let genreChart = null;
 
-const accessToken = 'null';  // This will be replaced by GitHub Actions
+  const accessToken =
+    'BQAiHfdnZ6248ykj0nbFEyTROoSh8D0R7Hywioktnp8vMK0S-RMGi1szPiJ1alRCs30jBHDSPpKObNu7tvWWo4b8K6sMd8mvXmilWRnaWpb8lyhCV6M'; // Replace with your Spotify access token
   const moodPlaylists = {
     happy: '37i9dQZF1DX4VvY1c2sM2M',
     chill: '6IKQrtMc4c00YzONcUt7QH',
@@ -91,12 +92,8 @@ const accessToken = 'null';  // This will be replaced by GitHub Actions
       genreChart.destroy();
     }
 
-    const sortedGenres = Object.entries(genreCounts).sort(
-      (a, b) => b[1] - a[1]
-    );
-    const topGenres = sortedGenres.slice(0, 5);
-    const genres = topGenres.map((entry) => entry[0]);
-    const counts = topGenres.map((entry) => entry[1]);
+    const genres = Object.keys(genreCounts);
+    const counts = Object.values(genreCounts);
 
     genreChart = new Chart(genreChartCanvas, {
       type: 'pie',
@@ -112,6 +109,11 @@ const accessToken = 'null';  // This will be replaced by GitHub Actions
               'rgba(255, 206, 86, 0.6)',
               'rgba(75, 192, 192, 0.6)',
               'rgba(153, 102, 255, 0.6)',
+              'rgba(255, 159, 64, 0.6)',
+              'rgba(201, 203, 207, 0.6)',
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
             ],
             borderColor: [
               'rgba(255, 99, 132, 1)',
@@ -119,6 +121,11 @@ const accessToken = 'null';  // This will be replaced by GitHub Actions
               'rgba(255, 206, 86, 1)',
               'rgba(75, 192, 192, 1)',
               'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+              'rgba(201, 203, 207, 1)',
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
             ],
             borderWidth: 1,
           },
