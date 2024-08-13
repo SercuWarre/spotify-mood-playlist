@@ -69,7 +69,7 @@ h1 {
 
 .dropbtn {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--secondary-color);
     padding: var(--button-padding);
     border: none;
     border-radius: var(--border-radius);
@@ -84,11 +84,11 @@ h1 {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
     border-radius: var(--border-radius);
     top: 100%; /* Position below the button */
-    left: -100%;
+    left: -20%;
 }
 
 .dropdown-content a {
@@ -235,6 +235,9 @@ canvas {
     #songs-container {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+    /*dropdown*/
+    
+
 }
 
 @media (prefers-color-scheme: dark) {
