@@ -26,13 +26,16 @@ jobs:
       run: |
         CLIENT_ID=${{ secrets.CLIENT_ID }}
         CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}
-        REFRESH_TOKEN=${{ secrets.SPOTIFY_REFRESH_TOKEN }}
         AUTH_HEADER=$(echo -n "$CLIENT_ID:$CLIENT_SECRET" | base64)
+        echo "Authorization Header: $AUTH_HEADER"
         RESPONSE=$(curl -s -X POST -H "Authorization: Basic $AUTH_HEADER" \
-        -d grant_type=refresh_token \
-        -d refresh_token=$REFRESH_TOKEN \
+        -d grant_type=client_credentials \
         https://accounts.spotify.com/api/token)
         echo "Response: $RESPONSE"
+        ERROR=$(echo "$RESPONSE" | jq -r .error)
+        ERROR_DESCRIPTION=$(echo "$RESPONSE" | jq -r .error_description)
+        echo "Error: $ERROR"
+        echo "Error Description: $ERROR_DESCRIPTION"
         TOKEN=$(echo "$RESPONSE" | jq -r .access_token)
         echo "Access Token: $TOKEN"
         echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
