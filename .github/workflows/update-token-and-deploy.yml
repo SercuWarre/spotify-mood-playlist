@@ -39,12 +39,13 @@ jobs:
         echo "Error Description: $ERROR_DESCRIPTION"
         TOKEN=$(echo "$RESPONSE" | jq -r .access_token)
 
+    - name: Debug Access Token
+      run: echo "Token from environment ${{ env.TOKEN }}"
 
 
     - name: Update Access Token in JavaScript
       run: |
         echo "Before replacement:"
-        cat ./app.js  # Display the file before modification
         sed -i "s/const accessToken = '.*'/const accessToken = '${{ env.TOKEN }}'/g" ./app.js
         echo "After replacement:"
         cat ./app.js  # Display the file after modification
