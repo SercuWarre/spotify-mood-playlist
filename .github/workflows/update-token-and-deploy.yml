@@ -18,6 +18,9 @@ jobs:
     - name: Install jq
       run: sudo apt-get install -y jq
 
+    - name: List Files for Debugging
+      run: ls -la  # Lists files to ensure the correct file paths
+
     - name: Refresh Spotify Access Token
       id: get-token
       run: |
@@ -39,7 +42,11 @@ jobs:
 
     - name: Update Access Token in JavaScript
       run: |
+        echo "Before replacement:"
+        cat ./app.js  # Display the file before modification
         sed -i "s/const accessToken = '.*'/const accessToken = '${{ env.TOKEN }}'/g" ./app.js
+        echo "After replacement:"
+        cat ./app.js  # Display the file after modification
 
     - name: Commit and Push Changes
       run: |
