@@ -47,8 +47,7 @@ jobs:
 
     - name: Update Access Token in JavaScript
       run: |
-        echo "Before replacement:"
-        sed -i "s/const accessToken = '.*'/const accessToken = '${{ env.TOKEN }}'/g" ./app.js
+        sed -i "s/const accessToken = '*'/const accessToken = '${{ env.TOKEN }}'/g" ./app.js
         echo "After replacement:"
         cat ./app.js  # Display the file after modification
 

@@ -142,6 +142,7 @@ main {
 .song-card h2 {
     font-size: 18px;
     margin: 10px 0 5px;
+    color: var(--text-color);
 }
 
 .song-card p {
@@ -218,7 +219,12 @@ canvas {
     width: 100% !important;
     height: auto !important;
     max-height: 40vh;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    
+    
 }
+
 
 /* Media queries for larger screens */
 @media (min-width: 600px) {
@@ -237,7 +243,7 @@ canvas {
     :root {
         --primary-color: #007bff;
         --secondary-color: #333;
-        --text-color: #fff;
+        --text-color: #1ED760;
         --background-color: #444;
         --dropdown-background: #555;
         --dropdown-item-hover: #666;
