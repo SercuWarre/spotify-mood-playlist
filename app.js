@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedMood = '';
   let genreChart = null;
 
-const accessToken = 'BQAw4alJuVKS8J1rMUdXrspoeUrX9w85PejKDQ2Y9lsTyRiUc5MD3dyo2CpG2_RkF-i7YpJMaQi3Jesu0jPWIHkly035j5Jl2Ucr3E3iI4iJhc17BJI';  // This will be replaced by GitHub Actions
+const accessToken = 'null';  // This will be replaced by GitHub Actions
   const moodPlaylists = {
     happy: '37i9dQZF1DX4VvY1c2sM2M',
     chill: '6IKQrtMc4c00YzONcUt7QH',
