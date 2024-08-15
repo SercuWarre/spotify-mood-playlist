@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tracks.forEach((track) => {
       const songCard = document.createElement('div');
       songCard.className = 'song-card';
+      songCard.setAttribute('tabindex', '0'); // Make song card focusable
 
       const albumCover = document.createElement('img');
       albumCover.src = track.album.images[0].url;
@@ -158,6 +159,20 @@ document.addEventListener('DOMContentLoaded', () => {
       songCard.appendChild(songTitle);
       songCard.appendChild(songArtist);
       songsContainer.appendChild(songCard);
+
+      // Add event listener for keyboard interaction
+      songCard.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          // Add logic here to handle what happens when Enter or Space is pressed
+          console.log(`Playing ${track.name} by ${track.artists[0].name}`);
+        }
+      });
+
+      // Optional: Add click event listener for mouse interaction
+      songCard.addEventListener('click', () => {
+        console.log(`Playing ${track.name} by ${track.artists[0].name}`);
+      });
     });
   };
 

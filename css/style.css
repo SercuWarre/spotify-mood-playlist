@@ -169,6 +169,11 @@ button:active {
     transition: transform 0.3s;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+.song-card:focus {
+    outline: 2px solid var(--primary-color); /* Highlight focused song card */
+    outline-offset: 4px;
+}
+
 
 /* Confirmation Message */
 #confirmation-message {
