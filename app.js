@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedMood = '';
   let genreChart = null;
 
-  const accessToken ='BQA8rm2yu1JP4djOxki1vnB3L4wNVefPHpIPIFLj951mC93aFef3hHZKQipmOBgtvbCimDcBmqqWXm9Y9tKS7NqQmrRggS1-wB81isvo1atncvCd1IY'; // Replace with actual access token
+  const accessToken =
+    'BQA8rm2yu1JP4djOxki1vnB3L4wNVefPHpIPIFLj951mC93aFef3hHZKQipmOBgtvbCimDcBmqqWXm9Y9tKS7NqQmrRggS1-wB81isvo1atncvCd1IY'; // Replace with actual access token
 
   const moodPlaylists = {
     Happy: '37i9dQZF1EIgG2NEOhqsD7',
@@ -41,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const fetchPlaylistTracks = async (playlistId) => {
-
     const response = await fetch(
       `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
       {
@@ -197,14 +197,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Event listener for dropdown menu items
   document.querySelectorAll('.dropdown-content a').forEach((item) => {
     item.addEventListener('click', (event) => {
       event.preventDefault();
       handleMoodSelection(event.target.dataset.value);
     });
+
+    item.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        handleMoodSelection(event.target.dataset.value);
+      }
+    });
   });
 
+  // Toggle dropdown on mood button click
   moodButton.addEventListener('click', () => {
     moodMenu.classList.toggle('show');
+    if (moodMenu.classList.contains('show')) {
+      moodMenu.querySelector('a').focus(); // Focus on the first item
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (event) => {
+    if (
+      !moodButton.contains(event.target) &&
+      !moodMenu.contains(event.target)
+    ) {
+      moodMenu.classList.remove('show');
+    }
+  });
+
+  // Handle keyboard navigation in the dropdown
+  moodMenu.addEventListener('keydown', (event) => {
+    const items = Array.from(moodMenu.querySelectorAll('a'));
+    const currentIndex = items.indexOf(document.activeElement);
+    let newIndex = currentIndex;
+
+    switch (event.key) {
+      case 'ArrowDown':
+        newIndex = (currentIndex + 1) % items.length;
+        event.preventDefault();
+        break;
+      case 'ArrowUp':
+        newIndex = (currentIndex - 1 + items.length) % items.length;
+        event.preventDefault();
+        break;
+      case 'Escape':
+        moodMenu.classList.remove('show');
+        moodButton.focus();
+        break;
+    }
+
+    if (newIndex !== currentIndex) {
+      items[newIndex].focus();
+    }
   });
 });

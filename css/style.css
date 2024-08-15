@@ -104,6 +104,11 @@ h1 {
 .dropdown-content a:hover {
     background-color: var(--dropdown-item-hover);
 }
+.dropdown-content a:focus {
+  background-color: var(--dropdown-item-hover); /* or any other color */
+  outline: none;
+}
+
 
 .show {
     display: block;
@@ -248,7 +253,7 @@ canvas {
         --text-color: #1ED760;
         --background-color: #444;
         --dropdown-background: #333;
-        --dropdown-item-hover: #666;
+        --dropdown-item-hover: #888;
         --loading-spinner-color: #007bff;
         --confirmation-background: #28a745;
         --confirmation-text: #fff;
