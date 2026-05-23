@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedMood = '';
   let genreChart = null;
 
-  const accessToken ='BQD2Ez-x6LqE6aHzoOZT0LmmXj4_VRyqYkooD_g2L7Vj9Vyjx8rVtA_Wro3onzrUXI-XmoB6VNOuVaFMScED_jUKHJr9YFpwcNHiG-COONGo5roTE1SVt_5IOubMHPtycQDboBZiI58'; // Replace with actual access token
+  const accessToken ='BQBWK4-vnvu5UUwyMeK1lLX0oWnPkEihG3RIpguLSyMpOobsUVdsBOcl5wOq9CYo8ZcY3SXmkRWv7oLk5cU-QtKLArR6g4zESuJT4fNv6C94kBKPgiNNNBcELWF3bbXm9e6wi-ZDIvk'; // Replace with actual access token
 
   const moodPlaylists = {
     Happy: '37i9dQZF1EIgG2NEOhqsD7',
